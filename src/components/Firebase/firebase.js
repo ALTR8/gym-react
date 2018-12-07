@@ -1,7 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 
-
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -21,15 +20,19 @@ class Firebase {
     createUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
-    signInWithEmailAndPassword = (email, password) =>
-        this.auth.signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword = (email, password) => {
+        this.auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+            console.log(email);
+            console.log(error);
+        })
+    }
+
 
     signInWithGoogle = () =>
         this.auth.signInWithPopup(this.googleProvider);
 
     signInWithFacebook = () =>
         this.auth.signInWithPopup(this.facebookProvider);
-
 
     signOutUser = () => this.auth.signOut()
 

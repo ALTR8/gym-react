@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
+import { SignInLink } from '../SignIn';
 import { withFirebase } from '../Firebase';
 
 import * as ROUTES from '../../constants/routes'
@@ -9,18 +10,13 @@ const SignUpPage = () => (
   <div>
     <h1>Sign Up!</h1>
     <SignUpForm />
+    <SignInLink />
   </div>
 );
 
-// const SignUpLink = () => {
-//     <p>
-//         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-//     </p>
-// }
-
 const INITIAL_STATE = {
-    username: '',
-    fullName: '',
+    lastName: '',
+    firstName: '',
     email: '',
     password: '',
     passwordConfirmation: '',
@@ -37,8 +33,7 @@ class SignUpFormComp extends Component {
     }
 
     onSubmit = e => {
-        const { username, firstName, lastName, email, password } = this.state;
-
+        const { email, password } = this.state;
         this.props.firebase
             .createUserWithEmailAndPassword(email, password)
             .then(authUser => {
@@ -58,32 +53,23 @@ class SignUpFormComp extends Component {
 
     render() {
         const {
-          username,
           firstName,
           lastName,
           email,
           password,
           passwordConfirmation,
-          error,
+          error
         } = this.state;
 
         const isInvalid =
             password !== passwordConfirmation ||
             password === '' ||
             email === '' ||
-            username === '' ||
             firstName === '' ||
             lastName === '';
 
         return(
             <form onSubmit={this.onSubmit}>
-                <input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="username"
-                />
                 <input
                     name="firstName"
                     value={firstName}
@@ -121,7 +107,6 @@ class SignUpFormComp extends Component {
                 />
 
                  <button disabled={isInvalid} type="submit">Sign Up</button>
-
                  {error && <p>{error.message}</p>}
             </form>
         );
