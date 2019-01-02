@@ -5,6 +5,7 @@ import SignOutButton  from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 const Navigation = ({ authUser }) => (
+    // eslint-disable-next-line
     console.log(authUser),
     <div>{authUser !== null ? <NavAuth /> : <NavNoAuth />}</div>
 )

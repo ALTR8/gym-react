@@ -29,23 +29,22 @@ class SignInFormComp extends Component {
 
 
     onSubmit = e => {
-        e.preventDefault();
         console.log("hit submit");
         const { email, password } = this.state;
         this.props.firebase
-            .signInWithEmailAndPassword(email, password)
-            .then(authUser => {
-
-                this.setState({ ...INITIAL_STATE });
+        .signInWithEmailAndPassword(email, password)
+        .then(authUser => {
+                this.setState({...INITIAL_STATE});
                 this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {
                 this.setState({ error })
             })
+        e.preventDefault();
     }
 
     onChange = e => {
-        this.setState({ [e.target.name]: e.target.values })
+        this.setState({ [e.target.name]: e.target.value })
     };
 
     render() {

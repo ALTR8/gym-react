@@ -22,7 +22,6 @@ class Firebase {
 
     signInWithEmailAndPassword = (email, password) => {
         this.auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-            console.log(email);
             console.log(error);
         })
     }
