@@ -33,7 +33,7 @@ class SignUpFormComp extends Component {
     }
 
     onSubmit = e => {
-        const { email, password } = this.state;
+        const { email, password, firstName } = this.state;
         this.props.firebase
             .createUserWithEmailAndPassword(email, password)
             .then(authUser => {
@@ -89,6 +89,7 @@ class SignUpFormComp extends Component {
                     value={email}
                     onChange={this.onChange}
                     type="text"
+                    autoComplete="username"
                     placeholder="Email Address"
                 />
                 <input
@@ -96,6 +97,7 @@ class SignUpFormComp extends Component {
                     value={password}
                     onChange={this.onChange}
                     type="password"
+                    autoComplete="new-password"
                     placeholder="Password"
                 />
                 <input

@@ -29,9 +29,8 @@ class SignInFormComp extends Component {
 
 
     onSubmit = e => {
-        console.log("hit submit");
-        const { email, password } = this.state;
-        this.props.firebase
+    const { email, password } = this.state;
+    this.props.firebase
         .signInWithEmailAndPassword(email, password)
         .then(authUser => {
                 this.setState({...INITIAL_STATE});
@@ -64,6 +63,7 @@ class SignInFormComp extends Component {
                     value={email}
                     onChange={this.onChange}
                     type="text"
+                    autoComplete="username"
                     placeholder="Email Address"
                 />
                 <input
@@ -71,6 +71,7 @@ class SignInFormComp extends Component {
                     value={password}
                     onChange={this.onChange}
                     type="password"
+                    autoComplete="current-password"
                     placeholder="Password"
                 />
                  <button disabled={isInvalid} type="submit">Sign In</button>

@@ -13,15 +13,6 @@ const Navigation = ({ authUser }) => (
 const NavAuth = () => (
     <ul>
       <li>
-        <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
         <Link to={ROUTES.HOME}>Home</Link>
       </li>
       <li>

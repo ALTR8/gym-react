@@ -20,11 +20,8 @@ class Firebase {
     createUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
-    signInWithEmailAndPassword = (email, password) => {
-        this.auth.signInWithEmailAndPassword(email, password).catch(function(error) {
-            console.log(error);
-        })
-    }
+    signInWithEmailAndPassword = (email, password) =>
+        this.auth.signInWithEmailAndPassword(email, password);
 
 
     signInWithGoogle = () =>
