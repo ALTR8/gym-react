@@ -25,7 +25,7 @@ const INITIAL_STATE = {
 
 //only component on this page because must handle state
 
-class SignUpFormComp extends Component {
+class SignUpFormPage extends Component {
     constructor(props) {
         super(props)
 
@@ -121,7 +121,7 @@ const SignUpLink = () => (
   </p>
 );
 
-const SignUpForm = withRouter(withFirebase(SignUpFormComp));
+const SignUpForm = withRouter(withFirebase(SignUpFormPage));
 
 export default SignUpPage;
 

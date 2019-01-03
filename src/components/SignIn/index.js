@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import { SignUpLink } from '../SignUp';
+import { PassForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -10,6 +11,7 @@ const SignInPage = () => (
     <h1>Sign In!</h1>
     <SignInForm />
     <SignUpLink />
+    <PassForgetLink />
   </div>
 );
 
@@ -19,7 +21,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-class SignInFormComp extends Component {
+class SignInFormPage extends Component {
     constructor(props) {
          super(props)
 
@@ -81,7 +83,7 @@ class SignInFormComp extends Component {
     }
 }
 
-const SignInForm = withRouter(withFirebase(SignInFormComp));
+const SignInForm = withRouter(withFirebase(SignInFormPage));
 
 const SignInLink = () => (
   <p>

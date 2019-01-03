@@ -6,3 +6,4 @@ export const ACCOUNT = '/account';
 export const PASSWORD_FORGET = '/pw-forget';
 export const ADMIN = '/admin';
 export const OWNER = '/owner';
+export const RESET_EMAIL_SENT = '/reset-email-sent';
