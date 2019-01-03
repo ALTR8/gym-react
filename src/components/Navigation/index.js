@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import SignOutButton  from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
+import { AuthUserContext } from '../Session';
+
 const Navigation = ({ authUser }) => (
-    // eslint-disable-next-line
-    console.log(authUser),
-    <div>{authUser !== null ? <NavAuth /> : <NavNoAuth />}</div>
+    <div>
+        <AuthUserContext.Consumer>
+            {
+                authUser  =>
+                authUser ? <NavAuth /> : <NavNoAuth />
+            }
+        </AuthUserContext.Consumer>
+    </div>
 )
 
 const NavAuth = () => (
