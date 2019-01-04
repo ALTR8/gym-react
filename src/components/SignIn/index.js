@@ -55,7 +55,6 @@ class SignInFormPage extends Component {
             error
         } = this.state;
 
-
         const isInvalid = password === '' || email === '';
 
         return(

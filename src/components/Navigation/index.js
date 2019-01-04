@@ -17,7 +17,7 @@ const Navigation = ({ authUser }) => (
     </div>
 )
 
-const NavAuth = () => (
+const NavAuth = (authUser) => (
     <ul>
       <li>
         <Link to={ROUTES.HOME}>Home</Link>

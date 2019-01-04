@@ -4,10 +4,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-const PassForgetPage = () => (
+const PasswordForgetPage = () => (
     <div>
         <h1>Change your password!</h1>
-        <PassForgetForm />
+        <PasswordForgetForm />
     </div>
 );
 
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
     error: null,
 };
 
-class PassForgetFormPage extends Component {
+class PasswordForgetFormPage extends Component {
     constructor(props) {
         super(props);
 
@@ -73,8 +73,8 @@ const PassForgetLink = () => (
     </p>
 );
 
-export default PassForgetPage;
+export default PasswordForgetPage;
 
-const PassForgetForm = withRouter(withFirebase(PassForgetFormPage));
+const PasswordForgetForm = withRouter(withFirebase(PasswordForgetFormPage));
 
-export { PassForgetForm, PassForgetLink }
+export { PasswordForgetForm, PassForgetLink }

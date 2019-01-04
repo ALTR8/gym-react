@@ -2,6 +2,7 @@ import React from 'react';
 
 import { AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
+import AccountPage from '../Account';
 
 const withAuth = Component => {
     class WithAuth extends Component {
@@ -9,13 +10,20 @@ const withAuth = Component => {
             super(props);
 
             this.state = {
-                authUser: null
+                authUser: null,
+                email: '',
+                displayName: '',
+
             };
         }
 
         componentDidMount() {
+
             this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
-                authUser ? this.setState({ authUser: this.props.firebase.auth.currentUser.providerData[0] }) : this.setState({ authUser: null });
+                authUser ? this.setState({
+                    authUser: this.props.firebase.auth.currentUser,
+                    email: this.props.firebase.auth.currentUser.email,
+                }) : this.setState({ authUser: null });
             });
         }
 
@@ -24,8 +32,9 @@ const withAuth = Component => {
         }
 
         render() {
+            console.log(this.state);
             return (
-                <AuthUserContext.Provider value={this.state.authUser}>
+                <AuthUserContext.Provider value={this.state}>
                     <Component {...this.props} />
                 </AuthUserContext.Provider>
             )
