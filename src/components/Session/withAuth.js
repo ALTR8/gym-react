@@ -11,7 +11,7 @@ const withAuth = Component => {
 
             this.state = {
                 authUser: null,
-                email: '',
+                email: null,
                 displayName: '',
 
             };
@@ -25,6 +25,7 @@ const withAuth = Component => {
                     email: this.props.firebase.auth.currentUser.email,
                 }) : this.setState({ authUser: null });
             });
+            console.log(this.state.authUser);
         }
 
         componentWillUnmount() {
