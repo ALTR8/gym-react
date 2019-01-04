@@ -48,21 +48,28 @@ class PasswordForgetFormPage extends Component {
         const isInvalid = email === '';
 
         return(
-            <form onSubmit= {this.onSubmit}>
-                <input
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    type="text"
-                    autoComplete="username"
-                    placeholder="Email Address"
-                />
-                <button disabled={isInvalid} type="submit">
-                    Reset Password
-                </button>
+            <div>
+            <h5>Forgot your password?</h5>
+                <form onSubmit= {this.onSubmit}>
+                    <label>
+                    Input your email address here -
+                    <br />
+                    <input
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.onChange}
+                        type="text"
+                        autoComplete="username"
+                        placeholder="Email Address"
+                    />
+                    </label>
+                    <button disabled={isInvalid} type="submit">
+                        Reset Password
+                    </button>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                    {error && <p>{error.message}</p>}
+                </form>
+            </div>
         );
     }
 }

@@ -17,7 +17,7 @@ class Firebase {
         this.auth = app.auth();
     }
     //Auth functions
-    createUserWithEmailAndPassword = (email, password) =>
+    createUserWithEmailAndPassword = (email, password, display) =>
         this.auth.createUserWithEmailAndPassword(email, password);
 
     signInWithEmailAndPassword = (email, password) =>
@@ -36,6 +36,15 @@ class Firebase {
 
     passwordUpdate = password =>
         this.auth.currentUser.updatePassword(password)
+
+    profileUpdate = username => {
+        this.auth.currentUser.updateProfile({ displayName: username }).then(function() {
+            console.log('yes', username);
+        }).catch(function(error) {
+            console.log('error', error);
+        })
+    }
+
 }
 
 export default Firebase;

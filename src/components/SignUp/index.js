@@ -33,10 +33,11 @@ class SignUpFormPage extends Component {
     }
 
     onSubmit = e => {
-        const { email, password } = this.state;
+        const { email, password, firstName } = this.state;
         this.props.firebase
-            .createUserWithEmailAndPassword(email, password)
+            .createUserWithEmailAndPassword(email, password, firstName)
             .then(authUser => {
+                this.props.firebase.profileUpdate(firstName)
                 this.setState({...INITIAL_STATE});
                 this.props.history.push(ROUTES.HOME);
             })
